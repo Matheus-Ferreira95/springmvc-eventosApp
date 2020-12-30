@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>/
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
@@ -26,10 +26,28 @@
 				<td><span th:text="${evento.horario}"></span></td>	
 			</tr>		
 		</tbody>	
-	</table>
-			
-	</div>			
-
+	</table>			
+	
+	
+	<form method="POST">
+		<p>Nome: <input type="text" value="" name="nomeConvidado"/></p>
+		<p>Rg:<input type="text" value="" name="rg"/></p>
+		<p><button class="waves-effect waves-light btn" type="submit">Adicionar</button></p>	
+	</form>			
+	</div>
+	
+	<h5>Lista Convidados: </h5>
+	<div class="container" th:each="convidado : ${convidados}">		
+		<div class="row">	
+			<div class="input-field col s6">
+				<p><span th:text="${convidado.nomeConvidado}"></span></p>
+			</div>
+			<div class="input-field col s3">
+				<p><span th:text="${convidado.rg}"></span></p>
+			</div>
+		</div>
+	</div>	
+	
 </body>
 
 </html>

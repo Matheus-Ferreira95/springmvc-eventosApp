@@ -1,9 +1,13 @@
 package com.matheusf.mvcmf.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Evento {
@@ -15,6 +19,9 @@ public class Evento {
 	private String local;
 	private String data;
 	private String horario;	
+	
+	@OneToMany(mappedBy = "evento")
+	private List<Convidado> convidados = new ArrayList<>();
 	
 	public Long getId() {
 		return id;

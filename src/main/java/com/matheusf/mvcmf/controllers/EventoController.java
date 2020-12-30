@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.matheusf.mvcmf.model.Convidado;
 import com.matheusf.mvcmf.model.Evento;
+import com.matheusf.mvcmf.repository.ConvidadoRepository;
 import com.matheusf.mvcmf.repository.EventoRepository;
 
 @Controller
@@ -20,6 +22,9 @@ public class EventoController {
 	
 	@Autowired
 	private EventoRepository eventoRepository;
+	
+	@Autowired
+	private ConvidadoRepository convidadoRepository;
 	
 	@GetMapping(value = "/cadastrarEvento")
 	public String form() {
@@ -45,6 +50,17 @@ public class EventoController {
 		ModelAndView mv = new ModelAndView("evento/detalheEvento");
 		Evento evento = eventoRepository.findById(id).get();
 		mv.addObject("evento", evento);
+		
+		List<Convidado> convidados = convidadoRepository.findByEvento(evento);
+		mv.addObject("convidados", convidados);
 		return mv;
+	}
+	
+	@PostMapping(value = "/detalhes/{id}")
+	public String addConvidados(@PathVariable Long id, Convidado convidado) {
+		Evento evento = eventoRepository.findById(id).get();
+		convidado.setEvento(evento);
+		convidadoRepository.save(convidado);
+		return "redirect:/eventos/detalhes/{id}";		
 	}
 }

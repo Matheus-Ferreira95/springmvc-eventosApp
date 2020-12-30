@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>EventosApp</title>	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	 
+</head>
+<body>		
+	<h1>Lista de Eventos</h1>
+	<h3><a href="/eventos" class="waves-effect waves-light btn">Lista de Eventos</a></h3>
+	
+	<div class="container">
+	<table class="table table-striped">		
+		<tr>
+				<th>Nome: </th>
+				<th>local: </th>
+				<th>Data: </th>
+				<th>Horario: </th>
+			</tr>
+		<tbody>
+			<tr>
+				<td><span th:text="${evento.nome}"></span></td>
+				<td><span th:text="${evento.local}"></span></td>
+				<td><span th:text="${evento.data}"></span></td>
+				<td><span th:text="${evento.horario}"></span></td>	
+			</tr>		
+		</tbody>	
+	</table>
+			
+	</div>			
+
+</body>
+
+</html>

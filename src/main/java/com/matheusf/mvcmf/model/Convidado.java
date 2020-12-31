@@ -3,12 +3,16 @@ package com.matheusf.mvcmf.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Convidado {
 	
 	@Id
-	private String rg;
+	@NotEmpty
+	private String rg;	
+	
+	@NotEmpty
 	private String nomeConvidado;
 	
 	@ManyToOne

@@ -8,32 +8,22 @@
 </head>
 <body>		
 	<h1>Lista de Eventos</h1>
-	<h3><a href="/eventos" class="waves-effect waves-light btn">Lista de Eventos</a></h3>
+	<h3><a href="/eventos" class="waves-effect waves-light btn">Lista de Eventos</a></h3>	
+	<div th:each="evento : ${evento}" class="container">
+		<div class="row">
+				<p>Nome: <span th:text="${evento.nome}"></span></p>
+				<p>Local: <span th:text="${evento.local}"></span></p>
+				<p>Data: <span th:text="${evento.data}"></span></p>
+				<p>Horario: <span th:text="${evento.horario}"></span></p>			
+		</div>
+			
+	<th:block th:include="mensagemValidacao"></th:block>
 	
-	<div class="container">
-	<table class="table table-striped">		
-		<tr>
-				<th>Nome: </th>
-				<th>local: </th>
-				<th>Data: </th>
-				<th>Horario: </th>
-			</tr>
-		<tbody>
-			<tr>
-				<td><span th:text="${evento.nome}"></span></td>
-				<td><span th:text="${evento.local}"></span></td>
-				<td><span th:text="${evento.data}"></span></td>
-				<td><span th:text="${evento.horario}"></span></td>	
-			</tr>		
-		</tbody>	
-	</table>			
-	
-	
-	<form method="POST">
-		<p>Nome: <input type="text" value="" name="nomeConvidado"/></p>
-		<p>Rg:<input type="text" value="" name="rg"/></p>
-		<p><button class="waves-effect waves-light btn" type="submit">Adicionar</button></p>	
-	</form>			
+		<form method="POST" th:object="${convidado}">
+			<p>Nome: <input type="text" value="" name="nomeConvidado" placeholder="Nome Completo"/></p>
+			<p>Rg:<input type="text" value="" name="rg" placeholder="AA-00.000.000" class="validate"/></p>
+			<p><button class="" type="submit">Adicionar</button></p>	
+		</form>			
 	</div>
 	
 	<h5>Lista Convidados: </h5>

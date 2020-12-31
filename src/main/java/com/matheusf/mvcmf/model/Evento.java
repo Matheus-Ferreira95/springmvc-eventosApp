@@ -3,6 +3,7 @@ package com.matheusf.mvcmf.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Evento {
 	@NotEmpty
 	private String horario;	
 	
-	@OneToMany(mappedBy = "evento")
+	@OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
 	private List<Convidado> convidados = new ArrayList<>();
 	
 	public Long getId() {
